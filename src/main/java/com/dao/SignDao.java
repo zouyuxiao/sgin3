@@ -11,4 +11,5 @@ import java.util.List;
 public interface SignDao {
     long insert(Sign sign);
     List<Sign> list();
+    Sign findById(Long id);
 }

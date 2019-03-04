@@ -3,15 +3,18 @@ package com.controller;
 import com.bean.Sign;
 import com.bean.User;
 import com.service.SginService;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.service.UserService;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ${邹} on 2019/1/11.
@@ -80,4 +83,13 @@ public class UserController {
         model.addAttribute( "uId",name2.getId() );
         return "success";
     }
+
+    @RequestMapping(value="/toQueryUser")
+    public ModelAndView toQueryUser(){
+        Sign sign = sginService.findById( (long) 1 );
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("user", sign);
+        return new ModelAndView("/pc/userTest", map);
+    }
+
 }

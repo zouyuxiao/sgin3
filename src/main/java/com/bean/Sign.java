@@ -2,6 +2,7 @@ package com.bean;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
  * Created by ${邹} on 2019/2/24.
  * 描述：
  */
-public class Sign {
+public class Sign implements Serializable{
+    private static final long serialVersionUID = -5244288298702801619L;
     private Long id;
     @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     private Date time;

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserDao">
-    <select id="login" resultType="User">
+    <!-- 缓存类配置 -->
+    <!--<cache type="com.util.RedisCache" />-->
+    <select id="login" resultType="User" useCache="true">
         SELECT * FROM s_user WHERE name=#{name}
     </select>
     <select id="login2" resultType="User">
         SELECT * FROM s_user
     </select>
-    <insert id="register" parameterType="User">
+    <insert id="register" parameterType="User" >
         INSERT INTO s_user(name,password,state) VALUES (#{name},#{password},#{state})
     </insert>
 </mapper>
